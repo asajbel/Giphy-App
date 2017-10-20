@@ -21,7 +21,7 @@ $(document).ready(function go() {
 		event.preventDefault();
 		var cartoon = this.dataset.name;
 		var limit = this.dataset.limit;
-		var queryURL = "http://api.giphy.com/v1/gifs/search?q="+cartoon+"&api_key="+API_KEY+"&limit="+limit;
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q="+cartoon+"&api_key="+API_KEY+"&limit="+limit;
 		$.ajax({
 			url: queryURL,
 			method: "GET",
