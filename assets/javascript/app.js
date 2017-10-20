@@ -33,13 +33,12 @@ $(document).ready(function go() {
 	}
 
 	function addGif(element) {
-		var gif = new $("<div>").addClass("gif-box col-auto");
-		var img = new $("<img>").addClass("gif-img");
-		var text = new $("<div>").addClass("gif-text");
+		var gif = $("<div>").addClass("gif-box col-auto");
+		var img = $("<img>").addClass("gif-img");
+		var text = $("<div>").addClass("gif-text");
 		var anim = element.images.original.url;
 		var still = element.images.original_still.url;
-		var width = element.images.original.width;
-		gif.css("width", width);
+		gif.css("width", parseInt(element.images.original.width) + 12);
 		img.attr("src", still)
 		img.data("still", still);
 		img.data("anim", anim);
