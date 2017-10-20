@@ -3,6 +3,8 @@
 }
 
 .gif-box {
+	word-wrap: break-word;
+	margin: .5rem;
 }
 
 .clearfix::after{

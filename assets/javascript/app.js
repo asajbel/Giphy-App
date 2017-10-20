@@ -33,17 +33,19 @@ $(document).ready(function go() {
 	}
 
 	function addGif(element) {
-		var gif = new $("<div>").addClass("gif-box clearfix");
+		var gif = new $("<div>").addClass("gif-box col-auto");
 		var img = new $("<img>").addClass("gif-img");
 		var text = new $("<div>").addClass("gif-text");
 		var anim = element.images.original.url;
 		var still = element.images.original_still.url;
+		var width = element.images.original.width;
+		gif.css("width", width);
 		img.attr("src", still)
 		img.data("still", still);
 		img.data("anim", anim);
 		img.data("animating", false);
 		text.append("<h3>Rating: "+element.rating+"</h3>");
-		text.append("<h6>Source: "+element.source+"</h6>");
+		text.append("<h6>Source: <a href="+element.source+" target='_blank'>"+element.source+"</a></h6>");
 		text.append("<h6>ID: "+element.id+"</h6>");
 		gif.append(img).append(text);
 		$("#gifs").append(gif);
