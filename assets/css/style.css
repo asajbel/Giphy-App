@@ -1,0 +1,12 @@
+.btn-cartoon {
+	margin: .5rem;
+}
+
+.gif-box {
+}
+
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
