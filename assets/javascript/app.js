@@ -29,7 +29,11 @@ $(document).ready(function go() {
 		}).done(function gotCartoon(response){
 			console.log(response);
 			$("#gifs").empty();
-			response.data.forEach(addGif);
+			if (response.data.length !== 0) {
+				response.data.forEach(addGif);
+			} else {
+				$("#gifs").append("<div class='col-auto'><h2>   No Gifs Found</h2></div>");
+			}
 		});
 	}
 
@@ -69,11 +73,20 @@ $(document).ready(function go() {
 		event.preventDefault();
 		var btnName = event.currentTarget[0].value.trim();
 
-		if ($.inArray(btnName, cartoons) === -1 && btnName !== "") {
+		if (!buttonMade(btnName, cartoons) && btnName !== "") {
 			cartoons.push(btnName);
 			addButton(btnName);
 		}
 		event.currentTarget[0].value = "";
+	}
+
+	function buttonMade(name, list) {
+		for (var i = 0; i < list.length; i++) {
+			if (name.toLowerCase() === list[i].toLowerCase()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	function initialize() {
