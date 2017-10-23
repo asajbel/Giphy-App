@@ -1,0 +1,19 @@
+.btn-cartoon {
+	margin: .5rem;
+}
+
+.gif-box {
+	word-wrap: break-word;
+	margin: .5rem;
+	padding: 4px;
+}
+
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+button {
+	cursor: pointer;
+}
