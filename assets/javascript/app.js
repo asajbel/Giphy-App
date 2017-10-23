@@ -22,6 +22,7 @@ $(document).ready(function go() {
 		var cartoon = this.dataset.name;
 		var limit = this.dataset.limit;
 		var queryURL = "https://api.giphy.com/v1/gifs/search?q="+cartoon+"&api_key="+API_KEY+"&limit="+limit;
+
 		$.ajax({
 			url: queryURL,
 			method: "GET",
@@ -38,14 +39,18 @@ $(document).ready(function go() {
 		var text = $("<div>").addClass("gif-text");
 		var anim = element.images.original.url;
 		var still = element.images.original_still.url;
+
 		gif.css("width", parseInt(element.images.original.width) + 12);
+
 		img.attr("src", still)
 		img.data("still", still);
 		img.data("anim", anim);
 		img.data("animating", false);
+
 		text.append("<h3>Rating: "+element.rating+"</h3>");
 		text.append("<h6>Source: <a href="+element.source+" target='_blank'>"+element.source+"</a></h6>");
 		text.append("<h6>ID: "+element.id+"</h6>");
+
 		gif.append(img).append(text);
 		$("#gifs").append(gif);
 	}
@@ -62,8 +67,9 @@ $(document).ready(function go() {
 
 	function newButton(event) {
 		event.preventDefault();
-		var btnName = event.currentTarget[0].value;
-		if ($.inArray(btnName, cartoons) === -1) {
+		var btnName = event.currentTarget[0].value.trim();
+
+		if ($.inArray(btnName, cartoons) === -1 && btnName !== "") {
 			cartoons.push(btnName);
 			addButton(btnName);
 		}
